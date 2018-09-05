@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="row" *ngIf="countrydata">
+    <div class="col-lg-12 col-md-12 divimg">
+      <img class="img-responsive" src="{{countrydata.flag}}" height="100%" width="100%">
+    </div>
+    <div class="col-md-12"><br></div>
+    
+      <div class="col-md-4"><span>Country Name: {{countrydata.name}}</span></div>
+      <div class="col-md-4">
+          <span>Native Name: {{countrydata.nativeName}}</span>
+      </div>
+      <div class="col-md-4">
+          <span>Population: {{countrydata.population}}</span>
+      </div>
+    
+    <div class="col-md-4">
+      <div class="col-md-12 divborder">
+        Alpha2code: {{countrydata.alpha2Code}}<br>
+        Alpha3code: {{countrydata.alpha3Code}}
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-12 divborder">
+        Also Known as: <span *ngFor="let x of countrydata.altSpellings;let i=index">
+          <span *ngIf="countrydata.altSpellings.length-1==i">
+              {{x}}
+          </span>
+          <span *ngIf="countrydata.altSpellings.length-1!=i">
+              {{x}},
+          </span>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-12 divborder">
+        Borders: <span *ngFor="let x of countrydata.borders;let i=index">
+            <span *ngIf="countrydata.borders.length-1==i">
+                {{x}}
+            </span>
+            <span *ngIf="countrydata.borders.length-1!=i">
+                {{x}},
+            </span>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-4">
+        <div class="col-md-12 divborder">
+          Capital: {{countrydata.capital}}<br>
+          CIOC: {{countrydata.cioc}} <br>
+          Demonym: {{countrydata.demonym}}
+        </div>
+      </div>
+    <div class="col-md-4">
+      <div class="col-md-12 divborder">
+        Currencies: <br><span *ngFor="let x of countrydata.currencies">
+            <span>
+              <span style="cursor: pointer;" routerLinkActive="active" [routerLink]="['/allCountries']" [queryParams]="{currency:x.code}">Name: {{x.name}}</span>,
+                Code: {{x.code}},
+                Symbol: {{x.symbol}}
+            </span>
+            <br>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-12 divborder">
+        Languages:<br>
+        <span *ngFor="let x of countrydata.languages">
+          Name: {{x.name}}, Native Name: {{x.nativeName}}<br>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-12 divborder">
+        Region: {{countrydata.region}}<br>
+        Regional Blocs:<br>
+        <span *ngFor="let x of countrydata.regionalBlocs">
+          <li>{{x.name}} ({{x.acronym}})</li>
+        </span>
+        Sub Region: {{countrydata.subregion}}
+      </div>
+    </div>
+    <div class="col-md-4"><div class="col-md-12 divborder">
+      TimeZones:<br>
+      <span *ngFor="let x of countrydata.timezones">
+        <li>{{x}}</li>
+      </span>
+    </div></div>
+    <div class="col-md-4">
+      <div class="col-md-12 divborder">
+        Domains:<br>
+        <span *ngFor="let x of countrydata.topLevelDomain">
+          <li>{{x}}</li>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="col-md-12 divborder">
+          <li>br: {{countrydata.translations.br}}</li>
+          <li>de: {{countrydata.translations.de}}</li>
+          <li>es: {{countrydata.translations.es}}</li>
+          <li>fa: {{countrydata.translations.fa}}</li>
+          <li>fr: {{countrydata.translations.fr}}</li>
+          <li>hr: {{countrydata.translations.hr}}</li>
+          <li>it: {{countrydata.translations.it}}</li>
+          <li>ja: {{countrydata.translations.ja}}</li>
+          <li>nl: {{countrydata.translations.nl}}</li>
+          <li>pt: {{countrydata.translations.pt}}</li>
+      </div>
+    </div>
+    <div style="text-align: center" class="col-md-12">
+      <button (click)=goBack() class="btn-primary">Go Back</button>
+    </div>
+  </div>
+</div>

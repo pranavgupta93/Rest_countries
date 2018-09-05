@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row" *ngIf="countries">
+    <div class="col-md-4" *ngFor="let country of countries;let i=index">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{country.flag}}" alt="Card image cap">
+        <div class="card-body" style="height: 15vh;">
+          <h5 class="card-title">Country Name: {{country.name}}</h5>
+
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Capital: {{country.capital}}</li>
+          <li style="height: 22vh;" class="list-group-item">Currency:
+            <span *ngFor="let currency of country.currencies;let i=index">
+              <span style="cursor: pointer;" routerLinkActive="active" [routerLink]="['/allCountries']" [queryParams]="{currency:currency.code}" *ngIf="i==country.currencies.length-1">{{currency.name}} ({{currency.symbol}})</span>
+              <span  style="cursor: pointer;" routerLinkActive="active" [routerLink]="['/allCountries']" [queryParams]="{currency:currency.code}" *ngIf="i!=country.currencies.length-1">{{currency.name}} ({{currency.symbol}}),</span>
+            </span>
+          </li>
+          <li class="list-group-item">Subregion: {{country.subregion}}</li>
+        </ul>
+        <div class="card-body">
+          <button class="btn btn-info" [routerLink]="['/countryDetails']" [queryParams]="{name:country.name}">More Details</button>
+        </div>
+      </div>
+      <br>
+    </div>
+    <div style="text-align: center" class="col-md-12">
+      <button (click)=goBack() class="btn-primary">Go Back</button>
+    </div>
+  </div>
+</div>
